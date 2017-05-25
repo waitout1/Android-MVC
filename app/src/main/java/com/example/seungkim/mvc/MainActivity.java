@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity implements NumberModel.OnNum
 
     @Override
     public void onClick(View v) {
-        if(v.getId() == R.id.tvResult){
+        if(v.getId() == R.id.btnChangeData){
             model.changeNumber();
         }
     }
