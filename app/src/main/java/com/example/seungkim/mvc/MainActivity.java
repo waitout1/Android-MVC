@@ -5,8 +5,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity implements NumberModel.OnNumberChangeListener, View.OnClickListener{
-    private NumberModel model;
+public class MainActivity extends AppCompatActivity implements View.OnClickListener{
+    private RandomNumberModel model;
     private TextView tvResult;
 
     @Override
@@ -14,8 +14,7 @@ public class MainActivity extends AppCompatActivity implements NumberModel.OnNum
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        model = new NumberModel();
-        model.setOnNumberChangeListener(this);
+        model = new RandomNumberModel();
 
         tvResult = (TextView)findViewById(R.id.tvResult);
         findViewById(R.id.btnChangeData).setOnClickListener(this);
@@ -23,13 +22,9 @@ public class MainActivity extends AppCompatActivity implements NumberModel.OnNum
 
     @Override
     public void onClick(View v) {
-        if(v.getId() == R.id.btnChangeData){
-            model.changeNumber();
+        if (v.getId() == R.id.btnChangeData) {
+            tvResult.setText("result : " + model.getNumber());
         }
     }
 
-    @Override
-    public void onNumberChange(int number) {
-        tvResult.setText("result : " + number);
-    }
 }
